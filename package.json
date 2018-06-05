@@ -30,7 +30,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
-  "name": "test-react",
+  "name": "tabl3",
   "version": "1.0.1",
   "main": "./dist/index.js",
   "directories": {
