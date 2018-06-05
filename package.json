@@ -31,8 +31,8 @@
     "react-dom": "^15.6.1"
   },
   "name": "test-react",
-  "version": "1.0.0",
-  "main": "webpack.config.js",
+  "version": "1.0.1",
+  "main": "./dist/index.js",
   "directories": {
     "test": "test"
   },

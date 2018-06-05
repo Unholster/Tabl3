@@ -310,6 +310,7 @@ var Tabl3 = function (_Component) {
   }, {
     key: 'handlerInputSearch',
     value: function handlerInputSearch(key, value) {
+      var _this7 = this;
 
       var i = this.state.inputSearch;
 
@@ -317,6 +318,8 @@ var Tabl3 = function (_Component) {
       this.setState({ inputSearch: i });
 
       if (this.state.inputSearch && this.state.paginator.actual) {
+        clearTimeout(this.inputTimeout);
+
         var url = this.state.paginator.actual;
         var orginalModel = this.state.inputSearch;
 
@@ -362,9 +365,11 @@ var Tabl3 = function (_Component) {
             }
           }
         });
-        // }
-        url = (0, _core.updateOrCreateParamFromQS)(url, 'offset', 0);
-        this.ajaxExec(url);
+
+        this.inputTimeout = setTimeout(function () {
+          url = (0, _core.updateOrCreateParamFromQS)(url, 'offset', 0);
+          _this7.ajaxExec(url);
+        }, 300);
       }
     }
   }, {
@@ -378,25 +383,25 @@ var Tabl3 = function (_Component) {
   }, {
     key: 'initialState',
     value: function initialState() {
-      var _this7 = this;
+      var _this8 = this;
 
       var initialAjax = this.state.initialAjax;
       this.setState({ inputSearch: {} });
       this.ajaxConector(initialAjax, function (dataset, response, opt) {
-        _this7.setStateService(dataset, response, opt);
+        _this8.setStateService(dataset, response, opt);
       });
     }
   }, {
     key: 'ajaxGotoPage',
     value: function ajaxGotoPage(nPage) {
-      var _this8 = this;
+      var _this9 = this;
 
       var configAjax = this.state.config.ajax;
       var url = this.state.paginator.actual;
       url = (0, _core.updateOrCreateParamFromQS)(url, 'offset', this.state.paginator.limit * (nPage - 1));
       configAjax.url = (0, _core.updateOrCreateParamFromQS)(url, 'limit', this.state.paginator.limit);
       this.ajaxConector(configAjax, function (dataset, response, opt) {
-        _this8.setStateService(dataset, response, opt);
+        _this9.setStateService(dataset, response, opt);
       });
     }
   }, {
