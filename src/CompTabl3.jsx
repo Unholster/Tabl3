@@ -253,6 +253,8 @@ class Tabl3 extends Component {
     this.setState({ inputSearch: i })
 
     if (this.state.inputSearch && this.state.paginator.actual) {
+      clearTimeout(this.inputTimeout)
+
       let url = this.state.paginator.actual
       const orginalModel = this.state.inputSearch
 
@@ -298,9 +300,11 @@ class Tabl3 extends Component {
           }
         }
       })
-      // }
-      url = updateOrCreateParamFromQS(url, 'offset', 0)
-      this.ajaxExec(url)
+
+      this.inputTimeout = setTimeout(() => {
+        url = updateOrCreateParamFromQS(url, 'offset', 0)
+        this.ajaxExec(url)
+      }, 300);
     }
   }
   resetToInitialState() {
