@@ -273,7 +273,6 @@ class Tabl3 extends Component {
       Object.keys(o).forEach(v => {
         if (Object.prototype.hasOwnProperty.call(o, v)) {
           if (o[v].value) {
-            console.log(o[v]);
             if (o[v].search instanceof Array && typeof o[v].value === 'string' ) {
               o[v].search.forEach(e => {
                 url = updateOrCreateParamFromQS(url, e, o[v].value)
@@ -287,7 +286,6 @@ class Tabl3 extends Component {
               url = updateOrCreateParamFromQS(url, o[v].search, o[v].value)
             }
           } else {
-            console.log(o[v]);
             if (o[v].search instanceof Array) {
               o[v].search.forEach(e => {
                 url = removeParamFromQS(e, url)
