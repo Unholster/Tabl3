@@ -227,10 +227,8 @@ class Tabl3 extends Component {
         this.state.config.onAfterSend(response.data)
       }
     }
-    config.headers = {
-      ...config.headers,
-      ...headers,
-    }
+    config.headers = this.props.config.ajax.headers;
+
     if (c.connector && c.connector instanceof Function ) {
       this.state.config.connector(config, cb, ecb, nonErrorAjax, cbAfterData)
     } else if (c.conector && c.conector instanceof Function) { // remove in future release
